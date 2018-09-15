@@ -6,13 +6,48 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Inbox</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row align-items-start>
+
+      <ion-col id="queue">
+
+        <ion-list>
+
+          <button ion-item *ngFor="let email of inbox" (click)="displayMessage(email)">
+
+            <h2>{{ email[0] }}</h2>
+            <h3>{{ email[1] }}</h3>
+            <p>{{ email[2] }}</p>
+
+          </button>
+
+        </ion-list>
+
+      </ion-col>
+
+      <ion-col col-8 id="message" style="display: none;">
+
+        <h2 id="subject" style="display: none;"> </h2>
+        <h4 id="author" style="display: none;"> </h4>
+
+        <hr id="divider" style="display: none;">
+
+        <p id="content" style="display: none;"> </p>
+
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
 
 </ion-content>
