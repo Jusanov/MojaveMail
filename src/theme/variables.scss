@@ -84,5 +84,9 @@ $colors: (
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
-@import "noto-sans";
+@import url('https://fonts.googleapis.com/css?family=Oxygen|Rubik');
+
+$font-family-base: "Rubik", sans-serif;
+$font-family-ios-base:	$font-family-base;
+$font-family-md-base:	$font-family-base;
+$font-family-wp-base:	$font-family-base;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Platform } from 'ionic-angular';
 import { ReadPage } from '../read/read';
+import { PlatformService } from '../../services/platform.service';
 
 /**
  * Generated class for the InboxPage page.
@@ -27,10 +27,9 @@ export class InboxPage {
 
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: PlatformService) {
 
-    if (platform.is('tablet') || platform.is('plablet') || platform.is('core')) this.isWidescreenDevice = true;
-    else this.isWidescreenDevice = false;
+    this.isWidescreenDevice = platform.isWidescreenDevice;
 
   }
 

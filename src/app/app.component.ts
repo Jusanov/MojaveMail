@@ -5,12 +5,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { InboxPage } from '../pages/inbox/inbox';
+import { SettingsPage } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class PinetreeMail {
   rootPage:any = InboxPage;
+  inboxPage: any = InboxPage;
+  settingsPage: any = SettingsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
