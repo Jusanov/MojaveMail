@@ -16,12 +16,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ReadPage {
 
   subject: string;
-  author: string;
+  senderName: string;
+  senderAddress: string;
   content: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.subject = navParams.get('subject');
-    this.author = navParams.get('author');
+    this.senderName = navParams.get('senderName');
+    this.senderAddress = navParams.get('senderAddress');
     this.content = navParams.get('content');
   }
 

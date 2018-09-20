@@ -26,9 +26,9 @@
 
           <button ion-item *ngFor="let email of inbox" (click)="displayMessage(email)">
 
-            <h2>{{ email[0] }}</h2>
-            <h3>{{ email[1] }}</h3>
-            <p>{{ email[2] }}</p>
+            <h2>{{ email.subject }}</h2>
+            <h3>{{ email.senderName }} ({{ email.senderAddress }})</h3>
+            <p>{{ email.content }}</p>
 
           </button>
 
@@ -39,7 +39,7 @@
       <ion-col col-8 id="message" style="display: none;">
 
         <h2 id="subject" style="display: none;"> </h2>
-        <h4 id="author" style="display: none;"> </h4>
+        <h4 id="sender" style="display: none;"> </h4>
 
         <hr id="divider" style="display: none;">
 

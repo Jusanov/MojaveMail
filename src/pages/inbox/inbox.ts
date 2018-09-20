@@ -21,10 +21,18 @@ export class InboxPage {
 
   // Testing Emails
   inbox = [
-
-    ["Testing Purposes", "Justin <myemail@email.email>", "This is a test message"],
-    ["Test #2", "Cheezy <thecheez@email.com>", "This is a test message again"]
-
+    {
+      subject: "Testing Purposes", 
+      senderName: "Justin Schaaf", 
+      senderAddress: "justin@example.com",
+      content: "This is a test message"
+    },
+    {
+      subject: "Test #2", 
+      senderName: "Braydon", 
+      senderAddress: "cheezy@example.com",
+      content: "This is a test message again"
+    }
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private platform: PlatformService) {
@@ -42,17 +50,18 @@ export class InboxPage {
 
   displayMessage(email) {
 
-    var subject = email[0];
-    var author = email[1];
-    var content = email[2];
+    var subject = email.subject;
+    var senderName = email.senderName;
+    var senderAddress = email.senderAddress;
+    var content = email.content;
 
     if (this.isWidescreenDevice) {
 
       document.getElementById("subject").style.display = "block";
       document.getElementById("subject").innerText = subject;
 
-      document.getElementById("author").style.display = "block";
-      document.getElementById("author").innerText = author;
+      document.getElementById("sender").style.display = "block";
+      document.getElementById("sender").innerText = senderName + " (" + senderAddress + ")";
 
       document.getElementById("divider").style.display = "block";
 
@@ -63,7 +72,8 @@ export class InboxPage {
       this.navCtrl.push(ReadPage, {
 
         subject: subject,
-        author: author,
+        senderName: senderName,
+        senderAddress: senderAddress,
         content: content
 
       })
