@@ -20,9 +20,9 @@ export class SettingsPage {
 
   addresses = [
     {
-      name: "Email",
-      address: "justin@email.email",
-      service: "Email"
+      name: "Main Email",
+      address: "justin@example.com",
+      service: "Example Email"
     }
   ]
 
