@@ -1,0 +1,36 @@
+.theme-dark {
+    $text-color:                 #fff !default;
+    $link-color:                 color($colors, primary) !default;
+    $background-color:           #222 !default;
+    $subdued-text-color:         #666 !default;
+
+    $toolbar-background:         #2b2b2b !default; // Default is #f8f8f8
+    $toolbar-border-color:       #0a0a0a !default; // Default is #b2b2b2
+    $toolbar-text-color:         $text-color !default;
+    $toolbar-active-color:       $link-color !default;
+    $toolbar-inactive-color:     #050505 !default; // Default is #8c8c8c
+
+    $tabs-background:            #2b2b2b !default; // Default is #f8f8f8
+    $tabs-border-color:          #0a0a0a !default; // Default is #b2b2b2
+    $tabs-tab-color-inactive:    #050505 !default; // Default is #8c8c8c
+    $tabs-tab-color-active:      $link-color !default;
+
+    $list-text-color:            $text-color !default;
+    $list-background-color:      $background-color !default;
+    $list-border-color:          #181711 !default; // Default is c8c7cc
+
+    ion-content {
+        background-color: $background-color;
+        color: $text-color;
+    }
+    .header .toolbar-background .tabs .tabbar {
+        background-color: $toolbar-background;
+        border-color: $toolbar-border-color;
+    }
+    .tab-button-icon .tab-button-text .toolbar-title {
+        color: $text-color;
+    }
+    .tabs .tab-button[area-selected=true] .tab-button-text {
+        color: $subdued-text-color
+    }
+}

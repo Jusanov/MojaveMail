@@ -12,7 +12,7 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
   <!--
     WARNING!
@@ -24,40 +24,70 @@
     <ion-col showWhen="tablet,phablet,core"></ion-col> <!--[display]="isWidescreenDevice ? block : none"-->
     <ion-col>
 
-      <h1>Accounts</h1>
+      <ion-card>
 
-      <ion-list id="accounts"> <!-- [attr.width]="isWidescreenDevice ? '35%' : '100%'"-->
-        <ion-item-sliding *ngFor="let address of addresses">
+        <ion-card-header>
+          <h1>General</h1>
+          <hr>
+        </ion-card-header>
+
+        <ion-card-content>
+          <h1>Accounts</h1>
+
+          <ion-list id="accounts"> <!-- [attr.width]="isWidescreenDevice ? '35%' : '100%'"-->
+            <ion-item-sliding *ngFor="let address of addresses">
+
+              <ion-item>
+
+                <h2>{{ address.name }}</h2>
+                <h3>{{ address.address }}</h3>
+                <h4>{{ address.service }}</h4>
+
+              </ion-item>
+
+              <ion-item-options slide="left">
+
+                <button ion-button>
+                  <ion-icon name="create"></ion-icon>
+                  Edit
+                </button>
+
+                <button ion-button color="danger">
+                  <ion-icon name="trash"></ion-icon>
+                  Delete
+                </button>
+
+              </ion-item-options>
+
+            </ion-item-sliding>
+          </ion-list>
+
+          <button ion-button color="primary" icon-start>
+            <ion-icon name="add"></ion-icon>
+            Add an account
+          </button>
+
+        </ion-card-content>
+
+      </ion-card>
+
+      <ion-card>
+
+        <ion-card-header>
+          <h1>Theming</h1>
+          <hr>
+        </ion-card-header>
+
+        <ion-card-content>
 
           <ion-item>
-
-            <h2>{{ address.name }}</h2>
-            <h3>{{ address.address }}</h3>
-            <h4>{{ address.service }}</h4>
-
+            <ion-label>Dark Mode</ion-label>
+            <ion-toggle enabled color="primary" [(ngModel)]="dark" (ionChange)="changeTheme()"></ion-toggle>
           </ion-item>
 
-          <ion-item-options slide="left">
+        </ion-card-content>
 
-            <button ion-button>
-              <ion-icon name="create"></ion-icon>
-              Edit
-            </button>
-
-            <button ion-button color="danger">
-              <ion-icon name="trash"></ion-icon>
-              Delete
-            </button>
-
-          </ion-item-options>
-
-        </ion-item-sliding>
-      </ion-list>
-
-      <button ion-button color="primary" icon-start>
-        <ion-icon name="add"></ion-icon>
-        Add an account
-      </button>
+      </ion-card>
 
     </ion-col>
     <ion-col showWhen="tablet,phablet,core"></ion-col>

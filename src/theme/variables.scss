@@ -22,7 +22,7 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
+//$background-color: #e6e6e6;
 
 
 // Named Color Variables
@@ -34,11 +34,11 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #009245,
-  secondary:  #007130, // #488aff -- Ionic Blue
-  danger:     #D00000, // #f53d3d -- Default Danger Color
-  light:      #e6e6e6,
-  dark:       #222
+  primary:    #009245, // Evergreen
+  secondary:  #80AABE, // Fjord Blue
+  danger:     #D00000, // Rose Red
+  light:      #e6e6e6, // Pearl White
+  dark:       #222     // Midnight Black
 );
 
 
@@ -53,8 +53,28 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$border-radius: 0px;
 
-
+$alert-md-border-radius: $border-radius;
+$alert-md-button-border-radius: $border-radius;
+$alert-md-checkbox-border-radius: $border-radius;
+$alert-md-radio-border-radius:  $border-radius;
+$alert-md-radio-icon-border-radius: $alert-md-radio-border-radius;
+$badge-md-border-radius: $border-radius;
+$button-md-border-radius: $border-radius;
+//$button-md-round-border-radius: $border-radius;
+$card-md-border-radius: $border-radius;
+$checkbox-md-icon-border-radius: $border-radius;
+$chip-md-border-radius: $border-radius;
+$item-md-avatar-border-radius: $border-radius;
+$list-inset-md-border-radius: $border-radius;
+$loading-md-border-radius: $border-radius;
+$popover-md-border-radius: $border-radius;
+$radio-md-icon-border-radius: $border-radius;
+$range-md-tick-border-radius: $border-radius;
+$searchbar-md-input-border-radius: $border-radius;
+$toggle-md-handle-border-radius: $border-radius;
+$toolbar-md-button-border-radius: $border-radius;
 
 // App Windows Variables
 // --------------------------------------------------
@@ -70,7 +90,9 @@ $colors: (
 // so that the above variables are used and Ionic's
 // default are overridden.
 
-@import "ionic.theme.default";
+// Themes
+@import "theme-dark";
+@import "theme-light";
 
 
 // Ionicons
@@ -79,12 +101,13 @@ $colors: (
 // http://ionicframework.com/docs/ionicons/
 
 @import "ionic.ionicons";
+@import "pinetree-icons";
 
 
 // Fonts
 // --------------------------------------------------
 
-@import url('https://fonts.googleapis.com/css?family=Oxygen|Rubik');
+@import url('https://fonts.googleapis.com/css?family=Rubik');
 
 $font-family-base: "Rubik", sans-serif;
 $font-family-ios-base:	$font-family-base;

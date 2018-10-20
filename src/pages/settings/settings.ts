@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PlatformService } from '../../services/platform.service';
+import { DataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the SettingsPage page.
@@ -16,7 +17,8 @@ import { PlatformService } from '../../services/platform.service';
 })
 export class SettingsPage {
 
-  isWidescreenDevice: Boolean;
+  dark: Boolean;
+  widescreen: Boolean;
 
   addresses = [
     {
@@ -26,14 +28,24 @@ export class SettingsPage {
     }
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: PlatformService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: PlatformService, public data: DataProvider) {
 
-    this.isWidescreenDevice = platform.isWidescreenDevice;
+    this.widescreen = platform.isWidescreenDevice;
+    this.dark = this.data.getSetting("dark");
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
+  }
+
+  private stringToBoolean(string: String) {
+    if (string == "true") return true;
+    return false;
+  }
+
+  changeTheme() {
+    this.data.saveSetting("dark", this.dark);
   }
 
 }

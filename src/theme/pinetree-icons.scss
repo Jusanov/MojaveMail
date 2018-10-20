@@ -1,0 +1,24 @@
+// Pinetree Ionicons
+// --------------------------------------------------
+// The custom set of icons used by the Pinetree apps.
+// Adapted from https://stackoverflow.com/questions/42243553/use-custom-icons-with-tabs-in-ionic2
+
+ion-icon {
+    &[class*="pinetree-"] {
+        // Instead of using the font-based icons
+        // We're applying SVG masks
+        mask-size: contain;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+        width: 1em;
+        height: 1em;
+    }
+    // custom icons
+    &[class*="pinetree-envelope"] {
+        mask-image: url(../assets/icon/envelope.svg);
+    }
+    &[class*="pinetree-envelope-open"] {
+        mask-image: url(../assets/icon/envelope-open.svg);
+    }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="275" viewBox="0 0 320 275">
+  <title>Open Envelope</title>
+  <g>
+    <path d="M0,105V275H320V105ZM305,260H15V120H305Z" fill="#fff"/>
+    <polygon points="0 105 0 120 160 225 320 120 320 105 0 105" fill="#fff"/>
+    <polygon points="115 205 100 195 10 255 10 265 25 265 115 205" fill="#fff"/>
+    <polygon points="205 205 220 195 310 255 310 265 295 265 205 205" fill="#fff"/>
+    <polygon points="320 120 320 105 160 0 0 105 0 120 320 120" fill="#fff"/>
+  </g>
+</svg>

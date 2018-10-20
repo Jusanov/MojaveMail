@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="320" height="170" viewBox="0 0 320 170">
+  <defs>
+    <clipPath id="a">
+      <rect width="320" height="170" fill="none"/>
+    </clipPath>
+  </defs>
+  <title>Envelope</title>
+  <g clip-path="url(#a)">
+    <g>
+      <path d="M0,0V170H320V0ZM305,155H15V15H305Z" fill="#fff"/>
+      <path d="M0,0V15L160,120,320,15V0ZM160,100,30,15H290Z" fill="#fff"/>
+      <polygon points="115 100 100 90 10 150 10 160 25 160 115 100" fill="#fff"/>
+      <polygon points="205 100 220 90 310 150 310 160 295 160 205 100" fill="#fff"/>
+    </g>
+  </g>
+</svg>
