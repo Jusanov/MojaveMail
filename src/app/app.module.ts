@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { NativeStorage } from '@ionic-native/native-storage';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { PinetreeMail } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -24,6 +24,7 @@ import { DataProvider } from '../providers/data/data';
   ],
   imports: [
     BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(PinetreeMail, {
       mode: "md"
     })
@@ -39,7 +40,6 @@ import { DataProvider } from '../providers/data/data';
   providers: [
     StatusBar,
     SplashScreen,
-    NativeStorage,
     PlatformService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider

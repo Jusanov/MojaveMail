@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -16,9 +16,10 @@ export class PinetreeMail {
   rootPage:any = InboxPage;
   inboxPage: any = InboxPage;
   settingsPage: any = SettingsPage;
-  public theme: string;
+  public theme: string = "theme-light";
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public data: DataProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public data: DataProvider, public events: Events) {
+    
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -26,8 +27,19 @@ export class PinetreeMail {
       splashScreen.hide();
     });
 
-    this.theme = data.getSetting("dark") ? ".theme-dark" : ".theme-light";
+    events.subscribe('settings:updateTheme', () => {
+      this.updateTheme();
+    });
+
+    //this.updateTheme();
 
   }
+
+  updateTheme() {
+    console.log("Updating the theme!" + this.data.settings.dark);
+    this.theme = this.data.settings.dark ? "theme-dark" : "theme-light";
+    console.log("New Theme: " + this.theme);
+  }
+
 }
 

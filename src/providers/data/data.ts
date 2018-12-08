@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NativeStorage } from '@ionic-native/native-storage';
-import { ValueTransformer } from '@angular/compiler/src/util';
+import { Storage } from '@ionic/storage';
 
 /*
   Generated class for the DataProvider.
@@ -13,12 +12,42 @@ import { ValueTransformer } from '@angular/compiler/src/util';
 @Injectable()
 export class DataProvider {
 
-  constructor(public storage: NativeStorage) {
+  public settings = {
+    dark: false,
+  };
+
+  constructor(private storage: Storage) {
+    this.getSettings();
     console.log('DataProvider ready to provide data!');
   }
 
-  throwFetchingError(error, origin: String) {
-    this.storage.setItem(origin + "", {});
+  saveSettings() {
+
+    this.storage.set("settings.dark", this.settings.dark);
+
+  }
+
+  getSettings() {
+
+    this.settings.dark = this.getSetting("settings.dark");
+
+  }
+
+  private getSetting(name: String) {
+
+    var value;
+
+    this.storage.get("settings." + name).then((val) => {
+      value = val
+    });
+
+    return value;
+
+  }
+
+  // Old Code - use as reference until deleted
+
+/*  throwFetchingError(error) {
     console.error('Error fetching value! :: ', error)
   }
 
@@ -26,51 +55,9 @@ export class DataProvider {
     console.error('Error saving value! :: ', error)
   }
 
-  /*getFirstTime() {
-
-    this.storage.getItem("general").then(
-
-      general => {
-
-      },
-
-      error => {
-        return true;
-      }
-
-    );
-
-  }
-
-  saveFirstTime() {
-    this.storage.setItem("settings", {});
-    this.storage.setItem("accounts", {});
-  }*/
-
   saveSetting(setting: String, value) {
 
-    this.storage.getItem("settings").then(
-
-      settings => {
-
-        settings[setting + ""] = value;
-
-        this.storage.setItem("settings", settings).then(
-
-          () => console.debug('Successfully saved settings!'),
-
-          error => this.throwSavingError(error)
-
-        );
-
-      },
-
-      error => {
-        this.throwFetchingError(error, "settings");
-      }
-
-    );
-    this.storage.setItem("setting-" + setting.toLowerCase, value);
+    this.storage.set("settings-" + setting, value);
 
   }
 
@@ -78,14 +65,14 @@ export class DataProvider {
 
     var object;
 
-    this.storage.getItem("settings").then(
+    this.storage.get("settings-" + setting).then(
 
-      settings => {
-        object = settings[setting + ""];
+      (val) => {
+        object = val;
       },
 
       error => {
-        this.throwFetchingError(error, "settings");
+        this.throwFetchingError(error);
       }
 
     );
@@ -96,14 +83,14 @@ export class DataProvider {
 
   getAccounts() {
 
-    this.storage.getItem("accounts").then(
+    this.storage.get("accounts").then(
 
       accounts => {
         return accounts;
       },
 
       error => {
-        this.throwFetchingError(error, "accounts");
+        this.throwFetchingError(error);
         return;
       }
 
@@ -113,7 +100,7 @@ export class DataProvider {
 
   addAccount(service: String, username: String, password: String, name: String, imap: String, imapPort, smtp: String, smtpPort) {
 
-    this.storage.getItem("accounts").then(
+    this.storage.get("accounts").then(
 
       accounts => {
 
@@ -129,7 +116,7 @@ export class DataProvider {
         };
 
         accounts.add(account);
-        this.storage.setItem('accounts', accounts).then(
+        this.storage.set('accounts', accounts).then(
 
           () => console.debug('Successfully saved new account data!'),
 
@@ -140,12 +127,12 @@ export class DataProvider {
       }, 
 
       error => {
-        this.throwFetchingError(error, "accounts");
+        this.throwFetchingError(error);
         return;
       }
 
     );
 
-  }
+  }*/
 
 }

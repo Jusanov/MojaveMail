@@ -1,4 +1,5 @@
 .theme-dark {
+
     $text-color:                 #fff !default;
     $link-color:                 color($colors, primary) !default;
     $background-color:           #222 !default;
@@ -33,4 +34,32 @@
     .tabs .tab-button[area-selected=true] .tab-button-text {
         color: $subdued-text-color
     }
+    list-md ion-item-sliding {
+        background-color: $background-color;
+    }
+    hr {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+    .list-md .item-block .item-inner {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .item {
+        background-color: $background-color;
+        color: $text-color;
+    }
+
+    .card-md {
+        .card-header {
+            background-color: $background-color;
+            color: $text-color;
+        }
+        .card-content {
+            background-color: $background-color;
+            color: $text-color;
+        }
+        h1, h2, h3, h4, h5, h6, {
+            color: $text-color;
+        }
+    }
+
 }
