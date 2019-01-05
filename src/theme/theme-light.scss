@@ -1,3 +1,8 @@
 // For the light theme, just use the default Ionic styles.
 
 @import "ionic.theme.default";
+.theme-light {
+    .md .modal-wrapper {
+        border-radius: 0;
+    }
+}

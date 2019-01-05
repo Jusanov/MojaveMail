@@ -75,6 +75,11 @@ $range-md-tick-border-radius: $border-radius;
 $searchbar-md-input-border-radius: $border-radius;
 $toggle-md-handle-border-radius: $border-radius;
 $toolbar-md-button-border-radius: $border-radius;
+$modal-ios-border-radius: $border-radius;
+
+.md .modal-wrapper {
+  border-radius: 0;
+}
 
 // App Windows Variables
 // --------------------------------------------------

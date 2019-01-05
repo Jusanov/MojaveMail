@@ -13,6 +13,7 @@ import { SettingsPage } from '../pages/settings/settings';
 
 import { PlatformService } from '../services/platform.service';
 import { DataProvider } from '../providers/data/data';
+import { MailProvider } from '../providers/mail/mail';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DataProvider } from '../providers/data/data';
     SplashScreen,
     PlatformService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataProvider
+    DataProvider,
+    MailProvider
   ]
 })
 export class AppModule {}

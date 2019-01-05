@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { PlatformService } from '../../services/platform.service';
 import { DataProvider } from '../../providers/data/data';
 import { Events } from 'ionic-angular';
@@ -21,18 +21,13 @@ export class SettingsPage {
   dark: boolean;
   widescreen: boolean;
 
-  addresses = [
-    {
-      name: "Main Email",
-      address: "justin@example.com",
-      service: "Example Email"
-    }
-  ]
+  addresses = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: PlatformService, public data: DataProvider, private events: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: PlatformService, public dataCtrl: DataProvider, private events: Events, private modalCtrl: ModalController) {
 
     this.widescreen = platform.isWidescreenDevice;
-    this.dark = this.data.settings.dark;
+    this.dark = this.dataCtrl.settings.dark;
+    this.addresses = this.dataCtrl.settings.accounts;
 
   }
 
@@ -47,9 +42,20 @@ export class SettingsPage {
 
   changeTheme() {
     console.log("Changing the theme! " + this.dark);
-    this.data.settings.dark = this.dark;
-    this.data.saveSettings;
-    this.events.publish('settings:updateTheme');
+    this.dataCtrl.settings.dark = this.dark;
+    this.dataCtrl.saveSettings;
+    this.events.publish('updateSettings');
+  }
+
+  addAccount() {
+    let modal = this.modalCtrl.create('CreateAccountTypePage');
+    modal.present();
+    modal.onDidDismiss(data => {
+      if (data) {
+        this.dataCtrl.addAccount(data);
+        this.addresses = this.dataCtrl.settings.accounts;
+      }
+    });
   }
 
 }

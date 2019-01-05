@@ -35,13 +35,16 @@
           <h1>Accounts</h1>
 
           <ion-list id="accounts"> <!-- [attr.width]="isWidescreenDevice ? '35%' : '100%'"-->
+            <ion-item *ngIf="addresses == null">
+              <h4>Add an email account to get started!</h4>
+            </ion-item>
             <ion-item-sliding *ngFor="let address of addresses">
 
               <ion-item>
 
                 <h2>{{ address.name }}</h2>
-                <h3>{{ address.address }}</h3>
-                <h4>{{ address.service }}</h4>
+                <h3>{{ address.username }}</h3>
+                <h4>{{ address.service.toUpperCase() }}</h4>
 
               </ion-item>
 
@@ -62,7 +65,7 @@
             </ion-item-sliding>
           </ion-list>
 
-          <button ion-button color="primary" icon-start>
+          <button ion-button color="primary" icon-start (click)="addAccount()">
             <ion-icon name="add"></ion-icon>
             Add an account
           </button>

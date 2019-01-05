@@ -14,6 +14,7 @@ export class DataProvider {
 
   public settings = {
     dark: false,
+    accounts: []
   };
 
   constructor(private storage: Storage) {
@@ -21,15 +22,17 @@ export class DataProvider {
     console.log('DataProvider ready to provide data!');
   }
 
-  saveSettings() {
+  public saveSettings() {
 
     this.storage.set("settings.dark", this.settings.dark);
+    this.storage.set("settings.accounts", this.settings.accounts);
 
   }
 
-  getSettings() {
+  public getSettings() {
 
     this.settings.dark = this.getSetting("settings.dark");
+    this.settings.accounts = this.getSetting("settings.accounts");
 
   }
 
@@ -45,94 +48,40 @@ export class DataProvider {
 
   }
 
-  // Old Code - use as reference until deleted
+  public addAccount(account: {}) {
 
-/*  throwFetchingError(error) {
-    console.error('Error fetching value! :: ', error)
+    var accounts = this.settings.accounts;
+
+    if (accounts == undefined) accounts = [];
+
+    accounts[accounts.length] = account;
+
+    this.settings.accounts = accounts;
+
+    this.saveSettings();
+    
   }
 
-  throwSavingError(error) {
-    console.error('Error saving value! :: ', error)
-  }
+  public removeAccount(nick: String) {
 
-  saveSetting(setting: String, value) {
+    var accounts = this.settings.accounts;
 
-    this.storage.set("settings-" + setting, value);
+    for (var i = 0; i < accounts.length; i++) {
 
-  }
+      var account = accounts[i];
 
-  getSetting(setting: String) {
+      if (account.name == nick) {
 
-    var object;
+        accounts[i] = null;
 
-    this.storage.get("settings-" + setting).then(
-
-      (val) => {
-        object = val;
-      },
-
-      error => {
-        this.throwFetchingError(error);
       }
 
-    );
+    }
 
-    return object;
+    this.settings.accounts = accounts;
 
-  }
-
-  getAccounts() {
-
-    this.storage.get("accounts").then(
-
-      accounts => {
-        return accounts;
-      },
-
-      error => {
-        this.throwFetchingError(error);
-        return;
-      }
-
-    )
+    this.saveSettings();
 
   }
-
-  addAccount(service: String, username: String, password: String, name: String, imap: String, imapPort, smtp: String, smtpPort) {
-
-    this.storage.get("accounts").then(
-
-      accounts => {
-
-        var account = {
-          service: service,
-          username: username,
-          password: password,
-          name: name,
-          imap: imap,
-          imapPort: imapPort,
-          smtp: smtp,
-          smtpPort: smtpPort
-        };
-
-        accounts.add(account);
-        this.storage.set('accounts', accounts).then(
-
-          () => console.debug('Successfully saved new account data!'),
-
-          error => this.throwSavingError(error)
-
-        );
-
-      }, 
-
-      error => {
-        this.throwFetchingError(error);
-        return;
-      }
-
-    );
-
-  }*/
 
 }

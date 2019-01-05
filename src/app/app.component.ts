@@ -27,7 +27,7 @@ export class PinetreeMail {
       splashScreen.hide();
     });
 
-    events.subscribe('settings:updateTheme', () => {
+    events.subscribe('updateSettings', () => {
       this.updateTheme();
     });
 
