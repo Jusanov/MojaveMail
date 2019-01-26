@@ -66,7 +66,7 @@ export class InboxPage {
       document.getElementById("divider").style.display = "block";
 
       document.getElementById("content").style.display = "block";
-      document.getElementById("content").innerText = content;
+      document.getElementById("content").innerHTML = content;
 
     } else {
       this.navCtrl.push(ReadPage, {

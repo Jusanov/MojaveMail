@@ -54,6 +54,7 @@ export class SettingsPage {
       if (data) {
         this.dataCtrl.addAccount(data);
         this.addresses = this.dataCtrl.settings.accounts;
+        this.events.publish('updateSettings');
       }
     });
   }
